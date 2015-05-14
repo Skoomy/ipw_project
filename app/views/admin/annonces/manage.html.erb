@@ -1,0 +1,31 @@
+<h1>Listing annonces</h1>
+
+<%= link_to 'Nouvelle annonce', new_annonce_path %>
+
+<%= link_to('Toutes les annonces', {:action => "manage"}) %>
+
+<%= link_to('Les annonces en attente de validation', {:action => "manage", :approved => "false"}) %>
+
+<table>
+  <tr>
+    <th>Entreprise</th>
+    <th>Titre</th>
+    <th>Type d'offre</th>
+    <th>Description</th>
+    <th>Durée</th>
+    <th>Date de début</th>
+    <th>Moyen de contact</th>
+  </tr>
+  
+  <% @annonces.each do |annonce| %>
+      <tr>
+	<td><%= annonce.entreprise %></td>
+	<td><%= annonce.titre %></td>
+	<td><%= annonce.type_offre%></td>
+	<td><%= annonce.description %></td>
+	<td><%= annonce.duree %></td>
+	<td><%= annonce.date_debut %></td>
+	<td><%= annonce.moyen_contact %></td>
+      </tr>
+  <% end %>
+</table>

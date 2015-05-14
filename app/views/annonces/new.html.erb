@@ -1,0 +1,46 @@
+<h1>Nouvelle annonce</h1>
+
+<%= form_for :annonce, url: annonces_path do |a| %>
+<p>
+  <%= a.label :entreprise %><br>
+  <%= a.text_field :entreprise %>
+</p>
+
+<p>
+  <%= a.label :titre %><br>
+  <%= a.text_field :titre %>
+</p>
+
+<p>
+  <%= a.label :type_offre, "Type d'offre" %><br>
+  <%= a.select(:type_offre, options_for_select([['Stage', 'stage'],['Alternance', 'alternance']])) %>
+</p>
+
+<p>
+  <%= a.label :description %><br>
+  <%= a.text_area :description, :cols => "50", :rows => "10" %>
+</p>
+
+<p>
+  <%= a.label :duree, "Durée" %><br>
+  <%= a.text_field :duree %>
+</p>
+
+<p>
+  <%= a.label :date_debut, "Date de début" %><br>
+  <%= a.date_select :date_debut %>
+</p>
+
+<p>
+  <%= a.label :moyen_contact, "Moyen de contact" %><br>
+  <%= a.telephone_field :moyen_contact %>
+</p>
+
+<p>
+  <%= a.submit %>
+</p>
+
+
+<% end %>
+
+<%= link_to 'Retour', annonces_path %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  entreprise: MyString
+  titre: MyString
+  type_offre: MyString
+  description: MyText
+  duree: 1
+  date_debut: 2015-05-06
+  moyen_contact: MyString
+
+two:
+  entreprise: MyString
+  titre: MyString
+  type_offre: MyString
+  description: MyText
+  duree: 1
+  date_debut: 2015-05-06
+  moyen_contact: MyString

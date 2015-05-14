@@ -1,0 +1,8 @@
+<h1>Job Board - ENSIIE</h1>
+<%= link_to 'Annonces', annonces_path %>
+<% if can? :manage, User %>
+  <%= link_to "Gérer les utilisateurs", admin_users_path %>
+<% end %>
+<% if can? :manage, Annonce %>
+  <%= link_to "Gérer les annonces", admin_annonces_path %>
+<% end %>

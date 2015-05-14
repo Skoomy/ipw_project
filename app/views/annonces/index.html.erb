@@ -1,0 +1,53 @@
+<script>
+    $(document).ready(function() {
+
+      $('#type_offre').change(function() {
+          $.ajax({
+             url: "<%= filter_annonces_path %>", // this will be routed
+             type: 'GET',
+             data: {
+               type_offre: $("#type_offre").val()
+             },
+             async: true
+           });
+        });
+      });
+</script>
+
+<h1>Les annonces</h1>
+
+<%= link_to 'Proposer une annonce', new_annonce_path %>
+<%= link_to 'Retour', root_path %>
+<p>
+  <p>Filtrer par</p>
+  <p>Type d'offre</p>
+  <%= select_tag(:type_offre, options_for_select([['stage', 'stage'], ['alternance', 'alternance']])) %>
+</p>
+
+<table id="tableau_annonces">
+<tbody>
+  <tr>
+    <th>Entreprise</th>
+    <th>Titre</th>
+    <th>Type d'offre</th>
+    <th>Description</th>
+    <th>Durée</th>
+    <th>Date de début</th>
+    <th>Moyen de contact</th>
+  </tr>
+  
+  <% @annonces.each do |annonce| %>
+    <% if annonce.approved? %>
+      <tr>
+	<td><%= annonce.entreprise %></td>
+	<td><%= annonce.titre %></td>
+	<td><%= annonce.type_offre%></td>
+	<td><%= text_area(:annonce, :description, cols: 50, rows: 10, value: annonce.description) %></td>
+	<td><%= annonce.duree %></td>
+	<td><%= annonce.date_debut %></td>
+	<td><%= annonce.moyen_contact %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</tbody>
+</table>

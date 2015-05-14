@@ -1,0 +1,54 @@
+var table = document.getElementById("tableau_annonces");
+table.innerHTML = "";
+var tbody = document.createElement("TBODY");
+tbody.innerHTML = "<tr><th>Entreprise</th><th>Titre</th><th>Type d'offre</th><th>Description</th><th>Durée</th><th>Date de début</th><th>Moyen de contact</th></tr>";
+table.appendChild(tbody);
+
+var row;
+var element_entreprise;
+var element_titre;
+var element_type_offre;
+var element_description;
+var element_duree;
+var element_date_debut;
+var element_moyen_contact;
+var text_node;
+  
+  "<% @annonces.each do |annonce| %>"
+  row = document.createElement("TR");
+  element_entreprise = document.createElement("TD");
+  text_node = document.createTextNode("<%= annonce.entreprise %>");
+  element_entreprise.appendChild(text_node);
+  element_titre = document.createElement("TD");
+  text_node = document.createTextNode("<%= annonce.titre %>");
+  element_titre.appendChild(text_node);
+  element_type_offre = document.createElement("TD");
+  text_node = document.createTextNode("<%= annonce.type_offre %>");
+  element_type_offre.appendChild(text_node);
+  element_description = document.createElement("TD");
+  element_description_text = document.createElement("TEXTAREA");
+  element_description_text.setAttribute("rows", 10);
+  element_description_text.setAttribute("cols", 50);
+  element_description_text.textContent = "<%= annonce.description %>";
+  element_description.appendChild(element_description_text);
+  element_duree = document.createElement("TD");
+  text_node = document.createTextNode("<%= annonce.duree %>");
+  element_duree.appendChild(text_node); 
+  element_date_debut = document.createElement("TD");
+  text_node = document.createTextNode("<%= annonce.date_debut %>");
+  element_date_debut.appendChild(text_node);
+  element_moyen_contact = document.createElement("TD");
+  text_node = document.createTextNode("<%= annonce.moyen_contact %>");
+  element_moyen_contact.appendChild(text_node);
+  
+  row.appendChild(element_entreprise);
+  row.appendChild(element_titre);
+  row.appendChild(element_type_offre);
+  row.appendChild(element_description);
+  row.appendChild(element_duree);
+  row.appendChild(element_date_debut);
+  row.appendChild(element_moyen_contact);
+  
+  tbody.appendChild(row);
+  
+  "<% end %>"

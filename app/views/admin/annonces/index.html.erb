@@ -1,0 +1,34 @@
+<%= link_to 'Nouvelle annonce', new_annonce_path %>
+
+<%= link_to('Toutes les annonces', {:action => "index"}) %>
+
+<%= link_to('Les annonces en attente de validation', {:action => "index", :approved => "false"}) %>
+
+<table>
+<tbody>
+  <tr>
+    <th>Entreprise</th>
+    <th>Titre</th>
+    <th>Type d'offre</th>
+    <th>Description</th>
+    <th>Durée</th>
+    <th>Date de début</th>
+    <th>Moyen de contact</th>
+  </tr>
+  
+  <% @annonces.each do |annonce| %>
+      <tr>
+	<td><%= annonce.entreprise %></td>
+	<td><%= annonce.titre %></td>
+	<td><%= annonce.type_offre%></td>
+	<td><%= annonce.description %></td>
+	<td><%= annonce.duree %></td>
+	<td><%= annonce.date_debut %></td>
+	<td><%= annonce.moyen_contact %></td>
+	<% if(!annonce.approved) %>
+	  <td><%= link_to "Valider", admin_annonce_path(annonce.id, annonce: {"approved" => true}), :method => :put, :confirm => "Are you sure?" %></td>
+	<% end %>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
